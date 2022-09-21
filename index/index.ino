@@ -1,26 +1,29 @@
 int i = 0;
+int time = 1000;
+int j = 0;
 
 void setup() {
   while (i < 4) {
     pinMode(i, OUTPUT);
     i = i + 1;
   }
-//  pinMode(A5, INPUT);
-//  Serial.begin(9600);
+  pinMode(A0, INPUT);
 }
 
 void loop() {
-  digitalWrite(0, HIGH);
-  digitalWrite(1, HIGH);
-  digitalWrite(2, HIGH);
-  digitalWrite(3, HIGH);
-  digitalWrite(4, HIGH);
-  delay(500);
-  digitalWrite(0, LOW);
-  digitalWrite(1, LOW);
-  digitalWrite(2, LOW);
-  digitalWrite(3, LOW);
-  digitalWrite(4, LOW);
-  delay(500);  
-//  Serial.println(A5);|
+  i = 0;
+
+  if (time < 100) {
+   time = 1000;
+  }
+
+  while (i < 5) {
+    digitalWrite(i, j % 2 == 0 ? HIGH : LOW);
+    delay(time);
+    i = i + 1; 
+  }
+
+  time = time - 100;
+  j = j + 1;
+
 }
